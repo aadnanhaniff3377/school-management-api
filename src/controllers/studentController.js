@@ -12,13 +12,18 @@ export const getStudents = async (req, res) => {
             success: true,
             data: result.rows
         });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "Error fetching students"
-        });
-    }
+    } 
+catch (error) {
+    console.error("ADD STUDENT ERROR:", error);
+
+    res.status(500).json({
+        success: false,
+        message: "Error adding student",
+        error: error.message,
+        code: error.code
+    });
+}
+
 };
 
 // GET STUDENT BY ID
